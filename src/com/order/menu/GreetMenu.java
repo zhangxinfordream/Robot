@@ -1,11 +1,14 @@
 package com.order.menu;
 
 /**
- * 保存问候语
+ * 问候语和笑话
  */
 public class GreetMenu {
 
-	public static final String[] greet = new String[]{"你好", "你今天好吗", "这天气太棒了", "选中一天的美好，剪切悲观的烦恼", 
-		"清晨的霞光无比灿烂", "把每个睡醒后的早晨当成一件礼物"};
+	public static final String[] greet = new String[]{"How a beautiful day!", "How are you today?", 
+		"Nice to meet you!", "Enjoy a beautiful day!"};
 
+	public static final String[] joke = new String[]{"Q:What door will never be closed?\nA:goal.", 
+		"Q:When will the bell ring 13 times?\nA:When the clock is bad.", "Q:What melon can not eat?"
+				+ "\nA:fool.", "Q:What word all over the world?\nA:Arabic numerals."};
 }

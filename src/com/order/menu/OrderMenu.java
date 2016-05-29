@@ -7,16 +7,7 @@ import java.util.ArrayList;
  */
 public class OrderMenu {
 
-	private ArrayList<Integer> order;        //用户点的菜品的id保存在这个数组中
-
-	public void init(){
-		order = new ArrayList<Integer>();
-	}
-	
-	public ArrayList<Integer> getOrder(){
-		if(order==null){
-			init();
-		}
-		return this.order;
-	}
+	public static ArrayList<String> order = new ArrayList<String>();        //用户点的菜品的id保存在这个数组中
+	public static int consumption = 0;                                      //消费总额
+	public static ArrayList<String> soldOut = new ArrayList<String>();      //卖光了的菜
 }

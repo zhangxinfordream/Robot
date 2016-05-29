@@ -5,9 +5,15 @@ package com.order.GUI.Impl;
  */
 public interface RobotInterface{
 	final int DEFAULT_WIDTH = 800;
-	final int DEFAULT_HEIGHT = 600;
+	final int DEFAULT_HEIGHT = 450;
 
 	void welcome();
 	
-	void orderList();
+	void leave();
+	
+	void orderList(boolean wrong);
+
+	void orderDetails(String type_id, int operate);
+	
+	void confirmOrder();
 }
