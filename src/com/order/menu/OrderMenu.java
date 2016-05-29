@@ -4,6 +4,7 @@ import java.util.ArrayList;
 
 /**
  * 已点菜品目录
+ * version 2.0
  */
 public class OrderMenu {
 

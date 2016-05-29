@@ -2,6 +2,7 @@ package com.order.GUI.Impl;
 
 /**
  *界面接口
+ *version 2.0
  */
 public interface RobotInterface{
 	final int DEFAULT_WIDTH = 800;

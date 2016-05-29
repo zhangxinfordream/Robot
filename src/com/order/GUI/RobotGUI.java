@@ -24,6 +24,7 @@ import com.order.service.RobotService;
 
 /**
  * ΩÁ√Ê
+ * version 2.0
  */
 public class RobotGUI extends JFrame implements RobotInterface{
 	private RobotService rs;
