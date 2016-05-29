@@ -205,26 +205,45 @@ public class RobotGUI extends JFrame implements RobotInterface{
 	public void orderDetails(final String type_id, final int operate) {
 		// TODO Auto-generated method stub
 		init();
-		final ArrayList<HashMap<String, String>> list = rs.findSomeFood(type_id);
+		ArrayList<HashMap<String, String>> detailsList = rs.findSomeFood(type_id);
 		
 		this.setVisible(false);       //设置窗口不可见
 		jp.removeAll();
 		
+		ArrayList<Integer> soldOutList = new ArrayList<Integer>();
+		int count_ = 0;
+		for(HashMap<String, String> map:detailsList){
+			for(String soldout:OrderMenu.soldOut){
+				if(soldout.equals(map.get("food_id"))){
+					soldOutList.add(count_);
+				}
+			}
+			count_++;
+		}
+		
+		ArrayList<HashMap<String, String>> tempList = new ArrayList<HashMap<String, String>>();
+		for(int i=0;i<detailsList.size();i++){
+			boolean flag = false;
+			for(int j:soldOutList){
+				if(j==i){
+					flag = true;
+					break;
+				}
+			}
+			if(flag){
+				continue;
+			}
+			tempList.add(detailsList.get(i));
+		}
+		
+		final ArrayList<HashMap<String, String>> list = tempList;
 		int x = 5;
 		int y = 35;
 		int count = 1;
 		for(HashMap<String, String> map:list){
-			JButton jb = null;
-			for(String str:OrderMenu.soldOut){
-				if(str.equals(map.get("food_id"))){
-					jb = new JButton();
-				}else{
-					jb = new JButton("<html>"+count+"<br>"+map.get("food_name")+"<br>"+"（￥"+map.get("price")+"）</html>");
-				}
-			}
-			if(OrderMenu.soldOut.size()==0){
-				jb = new JButton("<html>"+count+"<br>"+map.get("food_name")+"<br>"+"（￥"+map.get("price")+"）</html>");
-			}
+			boolean flag = false;
+			JButton jb = jb = new JButton("<html>"+count+"<br>"+map.get("food_name")+"<br>"+"（￥"+map.get("price")+"）</html>");
+
 			Color color = col[count-1];
 			jb.setBackground(color);
 			jb.setFont(new Font("宋体",Font.PLAIN,14));
@@ -238,6 +257,9 @@ public class RobotGUI extends JFrame implements RobotInterface{
 			count++;
 			
 			jp.add(jb);
+			if(count>6){
+				break;
+			}
 		}
 		
 		Font fo = new Font("宋体",Font.PLAIN,18);
@@ -322,7 +344,7 @@ public class RobotGUI extends JFrame implements RobotInterface{
     					flag = false;
     				}
     				if(flag){
-    					if(operate==1||operate==2){
+    					if(operate==1||operate==2||operate==4){
     						if(map.get("stock").equals("0")){
     							OrderMenu.soldOut.add(map.get("food_id"));
     							orderDetails(type_id, 4);
